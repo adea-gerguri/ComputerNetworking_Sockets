@@ -129,4 +129,14 @@ public class Server {
         }
     }
 
+        private static String handleWrite(String filename, String content) {
+        File file = new File(SHARED_FOLDER, filename);
+        try {
+            Files.write(file.toPath(), content.getBytes());
+            return "File " + filename + " written successfully.";
+        } catch (IOException e) {
+            return "Error writing to file.";
+        }
+    }
+
 }
