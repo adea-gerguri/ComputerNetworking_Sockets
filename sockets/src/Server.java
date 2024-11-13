@@ -139,4 +139,28 @@ public class Server {
         }
     }
 
+    
+    File file = new File(SHARED_FOLDER, filename);
+        try {
+            if (file.createNewFile()) {
+                return "File " + filename + " created successfully.";
+            } else {
+                return "File " + filename + " already exists.";
+            }
+        } catch (IOException e) {
+            return "Error creating file.";
+        }
+    }
+
+    private static String handleDelete(String filename) {
+        File file = new File(SHARED_FOLDER, filename);
+        if (!file.exists()) return "File not found.";
+
+        if (file.delete()) {
+            return "File " + filename + " deleted successfully.";
+        } else {
+            return "Error deleting file.";
+        }
+    }
+
 }
