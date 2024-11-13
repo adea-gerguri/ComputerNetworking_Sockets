@@ -106,7 +106,16 @@ public class Server {
             return "Error creating folder.";
         }
     }
+    private static String handleDeleteFolder(String folderName) {
+        File folder = new File(SHARED_FOLDER, folderName);
+        if (!folder.exists()) return "Folder not found.";
 
+        if (folder.isDirectory() && folder.delete()) {
+            return "Folder " + folderName + " deleted successfully.";
+        } else {
+            return "Error deleting folder.";
+        }
+    }
     //metodat...
 
 }
