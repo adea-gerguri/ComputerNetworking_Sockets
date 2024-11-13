@@ -117,5 +117,16 @@ public class Server {
         }
     }
     //metodat...
+    private static String handleRead(String filename) {
+        File file = new File(SHARED_FOLDER, filename);
+        if (!file.exists()) return "File not found.";
+
+        try {
+            String content = new String(Files.readAllBytes(file.toPath()));
+            return "Content of " + filename + ": " + content;
+        } catch (IOException e) {
+            return "Error reading file.";
+        }
+    }
 
 }
