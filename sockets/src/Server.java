@@ -95,6 +95,18 @@ public class Server {
             return "Error executing file";
         }
     }
+
+    private static String handleCreateFolder(String folderName) {
+        File folder = new File(SHARED_FOLDER, folderName);
+        if (folder.exists()) return "Folder already exists.";
+
+        if (folder.mkdirs()) {
+            return "Folder " + folderName + " created successfully.";
+        } else {
+            return "Error creating folder.";
+        }
+    }
+
     //metodat...
 
 }
