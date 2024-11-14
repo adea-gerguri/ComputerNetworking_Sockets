@@ -24,3 +24,34 @@ public class Client {
             } else {
                 System.out.println("Only read privileges");
             }
+
+            while (true) {
+                System.out.println("Enter command: ");
+                String command = scanner.nextLine();
+
+                String name = "";
+                if (!command.equalsIgnoreCase("sendmsg")) {
+                    System.out.println("Enter file/folder name:");
+                    name = scanner.nextLine();
+                }
+
+                switch (command.toLowerCase()) {
+                    case "sendmsg":
+                        System.out.println("Enter message to send:");
+                        String message = scanner.nextLine();
+                        sendCommand("SENDMSG " + message, clientSocket, serverAddress);
+                        break;
+
+                    case "readfile":
+                        sendCommand("READ " + name, clientSocket, serverAddress);
+                        break;
+
+                    case "writefile":
+                        if (IS_ADMIN) {
+                            System.out.println("Enter content to write in the file:");
+                            String content = scanner.nextLine();
+                            sendCommand("WRITE " + name + " " + content, clientSocket, serverAddress);
+                        } else {
+                            System.out.println("Denied. You do not have write privileges.");
+                        }
+                        break;
