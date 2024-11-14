@@ -4,7 +4,7 @@ import java.nio.file.*;
 
 public class Server {
     private static final int PORT = 6000;
-    private static final String IP_ADDRESS = "172.20.10.2";
+    private static final String IP_ADDRESS = "192.168.2.2";
     private static final String SHARED_FOLDER = "sockets/sharedFolder";
     public static void main(String[] args) {
         try {
@@ -96,27 +96,6 @@ public class Server {
         }
     }
 
-    private static String handleCreateFolder(String folderName) {
-        File folder = new File(SHARED_FOLDER, folderName);
-        if (folder.exists()) return "Folder already exists.";
-
-        if (folder.mkdirs()) {
-            return "Folder " + folderName + " created successfully.";
-        } else {
-            return "Error creating folder.";
-        }
-    }
-    private static String handleDeleteFolder(String folderName) {
-        File folder = new File(SHARED_FOLDER, folderName);
-        if (!folder.exists()) return "Folder not found.";
-
-        if (folder.isDirectory() && folder.delete()) {
-            return "Folder " + folderName + " deleted successfully.";
-        } else {
-            return "Error deleting folder.";
-        }
-    }
-    //metodat...
     private static String handleRead(String filename) {
         File file = new File(SHARED_FOLDER, filename);
         if (!file.exists()) return "File not found.";
@@ -129,7 +108,7 @@ public class Server {
         }
     }
 
-        private static String handleWrite(String filename, String content) {
+    private static String handleWrite(String filename, String content) {
         File file = new File(SHARED_FOLDER, filename);
         try {
             Files.write(file.toPath(), content.getBytes());
@@ -139,8 +118,8 @@ public class Server {
         }
     }
 
-    
-    File file = new File(SHARED_FOLDER, filename);
+    private static String handleCreate(String filename) {
+        File file = new File(SHARED_FOLDER, filename);
         try {
             if (file.createNewFile()) {
                 return "File " + filename + " created successfully.";
@@ -163,4 +142,25 @@ public class Server {
         }
     }
 
+    private static String handleCreateFolder(String folderName) {
+        File folder = new File(SHARED_FOLDER, folderName);
+        if (folder.exists()) return "Folder already exists.";
+
+        if (folder.mkdirs()) {
+            return "Folder " + folderName + " created successfully.";
+        } else {
+            return "Error creating folder.";
+        }
+    }
+
+    private static String handleDeleteFolder(String folderName) {
+        File folder = new File(SHARED_FOLDER, folderName);
+        if (!folder.exists()) return "Folder not found.";
+
+        if (folder.isDirectory() && folder.delete()) {
+            return "Folder " + folderName + " deleted successfully.";
+        } else {
+            return "Error deleting folder.";
+        }
+    }
 }
