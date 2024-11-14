@@ -71,3 +71,20 @@ public class Client {
                             System.out.println("Denied. You do not have delete privileges.");
                         }
                         break;
+
+
+                    case "createfolder":
+                        if (IS_ADMIN) {
+                            sendCommand("CREATEFOLDER " + name, clientSocket, serverAddress);
+                        } else {
+                            System.out.println("Denied. You do not have create folder privileges.");
+                        }
+                        break;
+
+                    case "deletefolder":
+                        if (IS_ADMIN) {
+                            sendCommand("DELETEFOLDER " + name, clientSocket, serverAddress);
+                        } else {
+                            System.out.println("Denied. You do not have delete folder privileges.");
+                        }
+                        break;
