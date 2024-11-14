@@ -56,7 +56,7 @@ public class Client {
                         }
                         break;
 
-                case "createfile":
+                    case "createfile":
                         if (IS_ADMIN) {
                             sendCommand("CREATE " + name, clientSocket, serverAddress);
                         } else {
@@ -88,3 +88,31 @@ public class Client {
                             System.out.println("Denied. You do not have delete folder privileges.");
                         }
                         break;
+                    case "execute":
+                        if(IS_ADMIN){
+                            sendCommand("EXECUTEFILE "+name, clientSocket, serverAddress);
+                        }else{
+                            System.out.println("Denied. You do not have execute privileges");
+                        }
+
+                    default:
+                        System.out.println("Unknown command. Please try again.");
+                }
+
+                DatagramPacket receivePacket = new DatagramPacket(buffer, buffer.length);
+                clientSocket.receive(receivePacket);
+                String response = new String(receivePacket.getData(), 0, receivePacket.getLength());
+
+                System.out.println("Server response: " + response);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void sendCommand(String command, DatagramSocket clientSocket, InetAddress serverAddress) throws IOException {
+        byte[] sendBuffer = command.getBytes();
+        DatagramPacket sendPacket = new DatagramPacket(sendBuffer, sendBuffer.length, serverAddress, SERVER_PORT);
+        clientSocket.send(sendPacket);
+    }}
+                }
