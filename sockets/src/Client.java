@@ -55,3 +55,19 @@ public class Client {
                             System.out.println("Denied. You do not have write privileges.");
                         }
                         break;
+
+                case "createfile":
+                        if (IS_ADMIN) {
+                            sendCommand("CREATE " + name, clientSocket, serverAddress);
+                        } else {
+                            System.out.println("Denied. You do not have create privileges.");
+                        }
+                        break;
+
+                    case "deletefile":
+                        if (IS_ADMIN) {
+                            sendCommand("DELETE " + name, clientSocket, serverAddress);
+                        } else {
+                            System.out.println("Denied. You do not have delete privileges.");
+                        }
+                        break;
