@@ -4,11 +4,12 @@
 
 ### Supervisor
 
-This is the second project from Computer Networks course assigned and supervised by PhD.C Mërgim Hoti.
+This is the second project from Computer Networks course assigned and supervised by Dr. Sc. Mergim H. Hoti.
 
 ## Usage
 
 This project was developed in Java and implements a simple client-server model using UDP sockets. The client can send encrypted messages and perform file operations on the server.
+This project serves as a practical example of how to implement secure communication and file manipulation over a network, making it a valuable learning tool for understanding fundamental networking protocols and security measures.
 
 ## Features
 ### Client:
@@ -19,6 +20,7 @@ This project was developed in Java and implements a simple client-server model u
   - **Create**: Create files or folders (Admin-only).
   - **Delete**: Delete files or folders (Admin-only).
   - **Execute**: Open files in Notepad on the server (Admin-only).
+
 ### Server:
 - Process client requests.
 - Manage files in the `sharedFolder` directory.
@@ -34,12 +36,15 @@ This project was developed in Java and implements a simple client-server model u
    java Client
    
 
-3. Enter the admin password (123) for full access, or proceed with limited privileges.
+3. Enter the admin password for full access, or proceed with limited privileges.
 
 ### Example Commands:
 - sendmsg: Send an encrypted message.
 - readfile: Read a file.
 - createfile: Create a new file (Admin-only).
+- deletefile: Delete a file
+- createfolder: Create a new folder
+  
 
 ## Folder Structure
 
