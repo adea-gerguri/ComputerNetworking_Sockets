@@ -4,7 +4,7 @@ import java.nio.file.*;
 
 public class Server {
     private static final int PORT = 6000;
-    private static final String IP_ADDRESS = "172.20.10.2";
+    private static final String IP_ADDRESS = "ip_here";
     private static final String SHARED_FOLDER = "sockets/sharedFolder";
     public static void main(String[] args) {
         try {

@@ -4,11 +4,10 @@ import java.util.Scanner;
 
 public class Client {
     private static final int SERVER_PORT = 6000;
-    private static final String SERVER_IP = "172.20.10.2";
+    private static final String SERVER_IP = "ip_here";
     private static final String PASSKEY = "123";
     private static boolean IS_ADMIN = false;
     private static final String FILENAME_REGEX = "^[^/\\\\]+$";
-    private static final String ENCRYPTION_KEY = "1234567890123456";
 
     public static void main(String[] args) {
         try (DatagramSocket clientSocket = new DatagramSocket();
