@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 public class Client {
     private static final int SERVER_PORT = 6000;
-    private static final String SERVER_IP = "192.168.2.2";
+    private static final String SERVER_IP = "172.20.10.2";
     private static final String PASSKEY = "123";
     private static boolean IS_ADMIN = false;
+    private static final String FILENAME_REGEX = "^[^/\\\\]+$";
+    private static final String ENCRYPTION_KEY = "1234567890123456";
 
     public static void main(String[] args) {
         try (DatagramSocket clientSocket = new DatagramSocket();
@@ -33,13 +35,28 @@ public class Client {
                 if (!command.equalsIgnoreCase("sendmsg")) {
                     System.out.println("Enter file/folder name:");
                     name = scanner.nextLine();
+
+                    if(!name.matches(FILENAME_REGEX)){
+                        System.out.println("Error: Invalid filename, do not use paths!");
+                        continue;
+                    }
                 }
 
                 switch (command.toLowerCase()) {
                     case "sendmsg":
-                        System.out.println("Enter message to send:");
-                        String message = scanner.nextLine();
-                        sendCommand("SENDMSG " + message, clientSocket, serverAddress);
+                        try {
+                            String key = "1234567890123456";
+
+                            System.out.println("Enter message to send:");
+                            String message = scanner.nextLine();
+
+                            String encryptedMessage = AESEncryption.encrypt(message, key);
+
+                            sendCommand("SENDMSG " + encryptedMessage, clientSocket, serverAddress);
+
+                        } catch (Exception e) {
+                            System.out.println("Error thrown in sendmsg case: "+e.getMessage());
+                        }
                         break;
 
                     case "readfile":
@@ -114,5 +131,6 @@ public class Client {
         byte[] sendBuffer = command.getBytes();
         DatagramPacket sendPacket = new DatagramPacket(sendBuffer, sendBuffer.length, serverAddress, SERVER_PORT);
         clientSocket.send(sendPacket);
-    }}
-                }
+    }
+}
+

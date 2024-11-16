@@ -4,7 +4,7 @@ import java.nio.file.*;
 
 public class Server {
     private static final int PORT = 6000;
-    private static final String IP_ADDRESS = "192.168.2.2";
+    private static final String IP_ADDRESS = "172.20.10.2";
     private static final String SHARED_FOLDER = "sockets/sharedFolder";
     public static void main(String[] args) {
         try {
@@ -31,8 +31,16 @@ public class Server {
 
                 switch (command.toUpperCase()) {
                     case "SENDMSG":
-                        response = "Message received: " + argument;
-                        System.out.println("Client message: " + argument);
+                        try {
+                            String key = "1234567890123456";
+                            String decryptedMessage = AESDecryption.decrypt(argument, key);
+
+                            response = "Message received: " + decryptedMessage;
+                            System.out.println("Client message: " + decryptedMessage);
+                        } catch (Exception e) {
+                            response = "Error decrypting the message. ";
+                            System.out.println("Decryption error: "+e.getMessage());
+                        }
                         break;
 
                     case "READ":
