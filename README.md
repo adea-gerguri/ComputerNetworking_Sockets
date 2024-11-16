@@ -1,20 +1,21 @@
-How to Run
+## How to Run
 
-1.Start the Server:
-java Server
+1. *Start the Server*:
+   java Server
+   
 
-2.Start the Client:
-java Client
+2. *Start the Client*:
+   java Client
+   
 
-3.Enter the admin password (123) for full access, or proceed with limited privileges.
+3. Enter the admin password (123) for full access, or proceed with limited privileges.
 
-Example Commands
+### Example Commands:
+- sendmsg: Send an encrypted message.
+- readfile: Read a file.
+- createfile: Create a new file (Admin-only).
 
-sendmsg: Send an encrypted message.
-readfile: Read a file.
-createfile: Create a new file (Admin-only).
-
-Folder Structure
+## Folder Structure
 
 src/
 ├── Client.java         # Client-side code
