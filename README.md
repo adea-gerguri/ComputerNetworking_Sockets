@@ -1,23 +1,20 @@
 How to Run
-Start the Server:
 
-bash
-Copy code
+1.Start the Server:
 java Server
-Start the Client:
 
-bash
-Copy code
+2.Start the Client:
 java Client
-Enter the admin password (123) for full access, or proceed with limited privileges.
 
-Example Commands:
+3.Enter the admin password (123) for full access, or proceed with limited privileges.
+
+Example Commands
 sendmsg: Send an encrypted message.
 readfile: Read a file.
 createfile: Create a new file (Admin-only).
+
 Folder Structure
-arduino
-Copy code
+
 src/
 ├── Client.java         # Client-side code
 ├── Server.java         # Server-side code
