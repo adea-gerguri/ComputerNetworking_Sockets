@@ -9,6 +9,7 @@ java Client
 3.Enter the admin password (123) for full access, or proceed with limited privileges.
 
 Example Commands
+
 sendmsg: Send an encrypted message.
 readfile: Read a file.
 createfile: Create a new file (Admin-only).
