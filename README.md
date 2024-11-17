@@ -46,15 +46,6 @@ This project serves as a practical example of how to implement secure communicat
 - createfolder: Create a new folder
   
 
-## Folder Structure
-
-src/
-├── Client.java         # Client-side code
-├── Server.java         # Server-side code
-├── AESEncryption.java  # Handles AES encryption
-├── AESDecryption.java  # Handles AES decryption
-sharedFolder/           # Server's shared directory
-
 # Contributors
 
 #### - Adea Tabaku
